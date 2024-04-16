@@ -1,0 +1,19 @@
+def set_session(request):
+    request.session['fname'] = 'Dr. R. Arthy'
+    return HttpResponse("Session data set")
+
+
+def get_session(request):
+    fname1 = request.session.get('fname', 'User')
+    return HttpResponse(f"Session data: {fname1}")
+
+
+def set_cookie(request):
+    response = HttpResponse("Cookie set")
+    response.set_cookie('fname', 'Dr. R. Arthy')
+    return response
+
+
+def get_cookie(request):
+    fname1 = request.COOKIES.get('fname', 'default_cookie_value')
+    return HttpResponse(f"Cookie value: {fname1}")
